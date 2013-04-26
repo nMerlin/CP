@@ -9,8 +9,10 @@
     PROGRAM = A1
     C_FILES := $(wildcard *.c)
     CPP_FILES := $(wildcard *.cpp)
-    OBJS := $(patsubst %.c, %.o, $(C_FILES))
-    CC = gcc
+    OBJS := $(patsubst %.cpp, %.o, $(CPP_FILES))
+    
+    #Compiler
+    CC = g++
     
     #***Compiler-Optionen***
     # -Wall: Enables all compiler warnings
@@ -39,10 +41,12 @@
     # These are the pattern matching rules. In addition to the automatic
     # variables used here, the variable $* that matches whatever % stands for
     # can be useful in special cases.
-    %.o: %.c
+    %.o: %.cpp
 		$(CC) $(CFLAGS) -c $< -o $@
  
-    %: %.c
+ 	# "-c" Flag only compiles the Code in *.o
+ 	
+    %: %.cpp
 		$(CC) $(CFLAGS) -o $@ $<
  
     clean:

@@ -16,14 +16,12 @@ double integrand(double x) {
 }
 
 //I_Delta Integrand
-double I_Delta_f (double x) {
-	double z = 0;
-	double Delta = 0.0001;
+double I_Delta(double x, double z, double Delta) {
 	return (f(x*Delta+z)-f(z))/x;
 }
 
 //Mittelpunktsregel
-double mittelpunkt (/*Funktionspointer als Übergabeparameter*/ double (*funcptr)(double), double a, double b, double N) {
+double mittelpunkt (/*Funktionspointer als Übergabeparameter double (*funcptr)(double)*/ std::function<double(double)> funcptr, double a, double b, double N) {
 	
 	//Variablen (intErg: Integrationsergebnis, h:Integrationsintervallbreite)
 	double intErg = 0;
@@ -40,9 +38,9 @@ double mittelpunkt (/*Funktionspointer als Übergabeparameter*/ double (*funcptr
 }
 
 //Hauptwertintegral berechnen
-double hauptwert(double (*funcptr)(double), double (*I_Delta_f)(double), double a, double b, double z, double Delta, int N) {
+double hauptwert(double (*funcptr)(double), std::function<double(double)> I_Delta_f, double a, double b, double z, double Delta, int N) {
 	//***Variablen***
-	double I_m, I_p, I_Delta;
+	double I_m = 0, I_p = 0, I_Delta;
 	
 	I_m = mittelpunkt(funcptr, a, z-Delta, N);
 	I_p = mittelpunkt(funcptr, z+Delta, b, N);
@@ -65,7 +63,11 @@ int main (int argc, char * const argv[]) {
 	int N = 1000;
 	
 	//bind durchlesen
+
+	// binding functions:
+	std::function<double (double)> I_Delta_f = std::bind(&I_Delta,std::placeholders::_1,z,Delta);
 	
-    std::cout << hauptwert(&integrand, &I_Delta_f, a, b, z, Delta, N) << std::endl;
+    std::cout << hauptwert(&integrand, I_Delta_f, a, b, z, Delta, N) << std::endl;
+    
     return 0;
 }

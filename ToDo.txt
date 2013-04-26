@@ -1,0 +1,4 @@
+To-Do:
+	- Selbst bind für Callback dokumentieren
+	- Klassen wiederholen und schreiben
+	- Programmcode in Klassen umwandeln
