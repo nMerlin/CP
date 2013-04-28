@@ -18,7 +18,8 @@
     # -Wall: Enables all compiler warnings
     # -pedantic: Issue all the warnings demanded by strict ISO C and ISO C++
     # -std=c++11: Enables c++11 support
-    CFLAGS = -Wall -pedantic -std=c++11
+    # -fopenmp: Benutze openmp
+    CFLAGS = -Wall -pedantic -std=c++11 -fopenmp
     
     #***Linker-Optionen***
     LDFLAGS =
