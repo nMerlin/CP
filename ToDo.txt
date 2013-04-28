@@ -1,4 +1,14 @@
 To-Do:
-	- Selbst bind für Callback dokumentieren
-	- Klassen wiederholen und schreiben
-	- Programmcode in Klassen umwandeln
+	Programmieren:
+		- Selbst bind für Callback dokumentieren
+		- Klassen wiederholen und schreiben
+		- Programmcode in Klassen umwandeln
+	
+	Entwicklungsumgebung:
+		- Github mit gespeichertem Key ansprechen
+			* ssh keygen
+			* gitosis
+			* public key
+			* Anleitung auf GitHub
+			* evtl. CMake um autom. Makefiles zu erstellen
+	
