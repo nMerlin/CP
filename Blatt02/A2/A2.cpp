@@ -94,7 +94,7 @@ double fraunhofer_viertel (double q_x, double q_y, int N) {
 //main
 int main () {
 	int N = 100;
-	std::string pfad = "/Users/johannesthewes/Git/CP/Blatt02/A2/";
+	std::string pfad = "./";
 	
 	plot (std::bind(&fraunhofer,std::placeholders::_1,N),pfad,"Iq",51,0,5);
 	plot3d (std::bind(&fraunhofer_viertel,std::placeholders::_1,std::placeholders::_2,N),pfad,"Iqxqy",61,-6,6);
