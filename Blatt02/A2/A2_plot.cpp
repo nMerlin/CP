@@ -55,7 +55,6 @@ std::string plot(std::function<double(double)> function, std::string pfad, std::
 std::string plot3d(std::function<double(double,double)> function, std::string pfad, std::string name, double schritte, double start, double stop) {
 	//***Variablen und Konstanten***
 	double h = (stop - start)/schritte;
-	int i,j;
 	
 	//Dateinamen und Titel im Plot
 	std::string gp_skript = "skript.plt";
@@ -74,14 +73,17 @@ std::string plot3d(std::function<double(double,double)> function, std::string pf
 	//skript << "set xlabel 'Theta_0 [rad]'" << std::endl;
 	//skript << "set ylabel 'Energie [willk. Einh.]'" << std::endl;
 	skript << "splot '" + pfad + name_plot + ".dat' with lines" + " title '" +  gp_title + "'" << std::endl;
-
+	
+	static int s = schritte;
+	
 	//Daten in die Gnuplot-Datenquelle einfüllen
-	//#pragma omp parallel 
-	//liefert aus irgendeinem Grund nur Mist...
-	for (j = 0; j < schritte; j++) {
+	//Dateibefehle außerhalb der Schleifen
+	//pragma liefert unsortierte Datenpunkte in der Datei
+	//#pragma omp parallel for
+	for (int j = 0; j < s; j++) {
 		double y = start + j*h;
 		
-		for (i = 0; i < schritte; i++) {
+		for (int i = 0; i < s; i++) {
 			
 			double x = start + i*h;
 			double z = function(x,y);
