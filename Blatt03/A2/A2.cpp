@@ -96,8 +96,34 @@ int main() {
 	y.push_back(1.);	//v_y
 	A2(y,"v_antipara",h);
 	
-	//Test der Energieerhaltung
+	//Test der Energieerhaltung (1D)
+	y.clear();
+	y.push_back(1.);
+	y.push_back(0);
 	
+	int N = ceil(100/h);
+
+	std::ofstream ekin("./E_kin.dat");
+	std::ofstream epot("./E_pot.dat");
+	std::ofstream eges("./E_ges.dat");
+	
+	for (int i = 0; i < N; i++) {
+		y = Runge_Kutta(&F1,y,h,h*i);
+		double e_kin = 0.5*y[1]*y[1];
+		double e_pot = 0.5*y[0]*y[0];
+		double e_ges = e_kin + e_pot;
+		ekin << h*i << " " << e_kin << std::endl;
+		epot << h*i << " " << e_pot << std::endl;
+		eges << h*i << " " << e_ges << std::endl;
+	}
+	
+	ekin.close();
+	epot.close();
+	eges.close();
+	
+	plot("./","E_kin");
+	plot("./","E_pot");
+	plot("./","E_ges");
 	
 	return 0;
 }

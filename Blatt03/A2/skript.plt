@@ -1,3 +1,3 @@
 set terminal pdf
-set output './v_antipara_v.pdf'
-splot './v_antipara_v.dat' with lines title 'v_antipara_v'
+set output './E_ges.pdf'
+plot './E_ges.dat' with lines title 'E_ges'
