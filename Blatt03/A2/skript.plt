@@ -1,3 +1,3 @@
 set terminal pdf
-set output './harm_oszi.pdf'
-plot './harm_oszi.dat' with lines title 'harm_oszi', cos(x)
+set output './v_antipara_v.pdf'
+splot './v_antipara_v.dat' with lines title 'v_antipara_v'
