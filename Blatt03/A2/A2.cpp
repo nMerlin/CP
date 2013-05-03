@@ -70,12 +70,19 @@ int main() {
 	// ***A2a***
 	h = pow(10,-3);
 	
-	//Nachweis der harmonischen Schwingung (1D)
+	//Nachweis der harmonischen Schwingung (1D), Maximalamplituden für verschiedene Schrittweiten
 	y.push_back(1.);
 	y.push_back(0);
-	A2(y,"harm_oszi",h);
+	A2(y,"harm_oszi_10e-3",h);
+	h = pow(10,-2);
+	A2(y,"harm_oszi_10e-2",h);
+	h = pow(10,-1);
+	A2(y,"harm_oszi_10e-1",h);
+	h = pow(10,0);
+	A2(y,"harm_oszi_10e-0",h);
 	
 	//Zusätzlich Geschwindigkeitsbeitrag parallel zur Bewegungsrichtung (1D)
+	h = pow(10,-3);
 	y.clear();
 	y.push_back(1.);
 	y.push_back(1.);
@@ -88,6 +95,9 @@ int main() {
 	y.push_back(0.);	//v_x
 	y.push_back(1.);	//v_y
 	A2(y,"v_antipara",h);
+	
+	//Test der Energieerhaltung
+	
 	
 	return 0;
 }
