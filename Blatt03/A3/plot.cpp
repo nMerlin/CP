@@ -151,6 +151,7 @@ std::string plot3d(std::string pfad, std::string name) {
 	//skript << "set xlabel 'Theta_0 [rad]'" << std::endl;
 	//skript << "set ylabel 'Energie [willk. Einh.]'" << std::endl;
 	skript << "splot '" + pfad + name_plot + ".dat' with lines" + " title '" +  gp_title + "'" << std::endl;
+	//skript << "splot '" + pfad + name_plot + ".dat' with lines" + " title '" +  gp_title + "', " << "'" + pfad + "Lenz_Runge_LR.dat' using 1:2:3:(1):(1):(1) with vectors" << std::endl;
 
 	skript.close();
 

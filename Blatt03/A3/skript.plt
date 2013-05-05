@@ -1,3 +1,3 @@
 set terminal pdf
-set output './Kepler_L.pdf'
-plot './Kepler_L.dat' with lines title 'Kepler_L'
+set output './Alpha_Potential_LR_z.pdf'
+plot './Alpha_Potential_LR_z.dat' with lines title 'Alpha_Potential_LR_z'
