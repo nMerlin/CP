@@ -1,3 +1,3 @@
 set terminal pdf
-set output './01Ellipse_r.pdf'
-splot './01Ellipse_r.dat' with lines title '01Ellipse_r'
+set output './Kepler_L.pdf'
+plot './Kepler_L.dat' with lines title 'Kepler_L'
