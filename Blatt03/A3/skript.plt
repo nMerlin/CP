@@ -1,3 +1,3 @@
 set terminal pdf
-set output './Alpha_Potential_LR_z.pdf'
-plot './Alpha_Potential_LR_z.dat' with lines title 'Alpha_Potential_LR_z'
+set output './Ellipse_r.pdf'
+splot './Ellipse_r.dat' with lines title 'Ellipse_r'

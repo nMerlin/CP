@@ -16,7 +16,7 @@ std::vector<double> F2 (double t_n, std::vector<double> y_n) {
 	//Variablen
 	const int y_l = y_n.size();
 	double r = 0; 	//Betrag des Ortsvektors
-	double alpha = 1.1;
+	double alpha = 1;
 	
 	std::vector<double> ret, v_n, r_n;
 	
@@ -213,14 +213,14 @@ int main() {
 	y.push_back(0);
 	y.push_back(0);
 	y.push_back(0);
-	y.push_back(0.7);
+	y.push_back(0.6);
 	y.push_back(0);
 	
-	//A3a(y, "Ellipse", h);
+	//Die folgenden Funktionen funktionieren nur bedingt, je nach verlangtem Plot und alpha
+	A3a(y, "Ellipse", h);
 	//A3b(y, "Kepler", h);
 	//A3c(y, "Lenz_Runge", h);
-	
-	A3e(y, "Alpha_Potential", h);
+	//A3e(y, "Alpha_Potential", h);
 	
 	return 0;	
 }
