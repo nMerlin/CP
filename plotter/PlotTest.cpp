@@ -16,7 +16,7 @@ double testFkt (double x)
 
 //main
 int main () {
-	int N = 100;
+	//int N = 100;
 	std::string pfad = "./";
 	
 	plotter plt;
