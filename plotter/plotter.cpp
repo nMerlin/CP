@@ -14,6 +14,7 @@ void plotter::init_()
     schrittweite_ = (xmax_ - xmin_)/schritte_;
     pfad_ = "./";
     name_ = "name";
+    daten_.push_back("");
     title_ = "title";
     xlabel_ = "x";
     ylabel_ = "y";
@@ -43,17 +44,20 @@ void plotter::setschritte(int schritte)
 
 void plotter::setpfad(std::string pfad)
 {
-    pfad_ = pfad;
+    pfad_ = pfad; 
+    daten_[0] = "'" + pfad_ + name_ + "'";
 }
 
 void plotter::setname(std::string name)
 {
     name_ = name;
+    daten_[0] = "'" + pfad_ + name_ + "'";
 }
 
 void plotter::settitle(std::string title)
 {
     title_ = title;
+  
 }
 
 void plotter::setxlabel(std::string xlabel)
@@ -68,9 +72,10 @@ void plotter::setylabel(std::string ylabel)
     label_ = true;
 }
 
+
 void plotter::writeskript_()
 {
-    std::ofstream skript((pfad_ + "skript_" + name_ + ".plt").c_str());
+    std::ofstream skript((pfad_ + name_ + ".plt").c_str());
     
     skript << "set grid" << std::endl;
     skript << "set terminal pdfcairo" << std::endl;
@@ -86,7 +91,15 @@ void plotter::writeskript_()
 	skript << "set xlabel " << xlabel_ << std::endl;
 	skript << "set ylabel " << ylabel_ << std::endl;
     }
-    skript << "plot '" + pfad_ + name_ + ".dat' with lines" + " title '" +  title_ + "'" << std::endl;
+    
+    std::string plot = "plot " + daten_[0] + " with lines";
+    
+    for(int i = 1; i < (int)daten_.size(); i++)
+    {
+      plot += ", " + daten_[i] + " with lines";
+    }
+    
+    skript << plot << std::endl;
     
     skript.close();
 }
@@ -108,14 +121,35 @@ void plotter::writedaten_()
     datei.close();
 }
 
+void plotter::addDat(std::string pfad_name)
+{
+  if(daten_[0] == "")
+  {
+    daten_[0] = "'" + pfad_name + "'";
+  }
+  else
+  {
+    daten_.push_back("'" + pfad_name + "'");
+  }
+}
+
+int plotter::plotDat()
+{
+    writeskript_();
+    system(("gnuplot '" + pfad_ + name_ + ".plt" + "'").c_str());
+    
+    return 0;
+}  
+
 int plotter::plot(std::function<double(double)> function)
 {
-    function_ = function;
+    function_ = function;    
     
+    daten_[0] = "'" + pfad_ + name_ + "'";
     writeskript_();
     writedaten_();
 
-    system(("gnuplot '" + pfad_ + "skript_" + name_ + ".plt" + "'").c_str()); 
+    system(("gnuplot '" + pfad_ + name_ + ".plt" + "'").c_str()); 
     
     return 0;
 }
