@@ -6,7 +6,7 @@
     This makefile requires GNU Make.
     endif
  
-    PROGRAM = A2
+    PROGRAM = A1
     C_FILES := $(wildcard *.c)
     CPP_FILES := $(wildcard *.cpp)
     OBJS := $(patsubst %.cpp, %.o, $(CPP_FILES))
@@ -19,6 +19,7 @@
     # -pedantic: Issue all the warnings demanded by strict ISO C and ISO C++
     # -std=c++11: Enables c++11 support
     # -fopenmp: Benutze openmp
+    # -O2: Zweite Optimierungsstufe
     CFLAGS = -Wall -pedantic -std=c++11 -fopenmp -O2
     
     #***Linker-Optionen***
