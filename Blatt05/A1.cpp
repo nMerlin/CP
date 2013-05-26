@@ -64,7 +64,10 @@ void debug_p(std::vector<teilchen> p) {
 	}
 }
 
-void debug(double x) {std::cout << x << std::endl;}
+void progress(double x) {
+	std::cout << "\rProgress: " << x << "%";
+	std::cout.flush(); //flush is required, otherwise, this would not work.
+}
 
 //Schreibe Ortsdaten in eine Datei (später in Animation überführt)
 void gif_ort (std::vector<teilchen> p, int num) {
@@ -206,7 +209,7 @@ std::vector<teilchen> integrate (std::vector<teilchen> p, std::vector<teilchen> 
 //***Parverteilung***
 void gr(int sw, Paarverteilung &pv, std::vector<teilchen> p, double L) {
 	const int N = 16;
-	const double rho = N/L*L;
+	const double rho = N/(L*L);
 	
 	if (sw == 0) {								//***Initialisierung***
 		pv.ngr = 0;								//Samplesize
@@ -292,13 +295,13 @@ void md (double L, double h, double T, double r_c, double t_max) {
 		
 		//Speichert die Werte für Aufgabenteil 1b
 		if (i%2000 == 0) {
+			progress(j/10);
 			a1b[j].v_sp = sqrt(v_sp.x*v_sp.x+v_sp.y*v_sp.y);
 			a1b[j].T = Temp;
 			a1b[j].E_kin = 0.5 * E_kin/16.;
 			a1b[j].E_pot = En/16.;
 			a1b[j].time = t;
 			j++;
-			debug(j);
 		}
 		
 		//Animation über 100 Zeitschritte
