@@ -1,0 +1,7 @@
+Eigenwerte (mittels dsyev):
+-1.95991
+2.7421
+3.94498
+11.2728
+Der größte Eigenwert nach der Potenzmethode lautet: 11.2728
+Die Genauigkeit von 10^-14 wurde nach 31 Durchläufen erreicht.

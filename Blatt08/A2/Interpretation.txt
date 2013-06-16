@@ -1,0 +1,5 @@
+Die Eigenwerte des Hamiltonoperators bezüglich der Besetzungszahlbasis verändern sich 
+nicht mehr in den signifikanten Stellen, während die des Operators bezüglich der Ortsbasis
+noch für höhere Dimensionen der Matrix stark variieren. Damit ist die Besetzungszahldarstellung
+die geeignete Wahl um Energieeigenwerte zu berechnen. Es sieht sogar so aus, dass die
+Eigenwerte in dieser Darstellung exakt werden.

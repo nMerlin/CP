@@ -68,7 +68,7 @@ int main() {
 	SchreibeDatenFkt(std::bind(&Gn,3,std::placeholders::_1),0,r_inf,h_a,"A2a_n3");
 	
 	//Abgelesene Schranken für die Nullstellen
-	s.min = 1.9; s.max = 2.1; schranken.push_back(s);
+	s.min = 1.95; s.max = 2.1; schranken.push_back(s);
 	s.min = 3.1; s.max = 3.3; schranken.push_back(s);
 	s.min = 3.45; s.max = 3.55; schranken.push_back(s);
 	s.min = 3.55; s.max = 3.7; schranken.push_back(s);

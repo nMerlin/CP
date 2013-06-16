@@ -1,0 +1,6 @@
+- Matrizen werden Zeilenweise in einem 1D-Array gespeichert
+- name_ zum Aufruf der Routine
+- alle übergebenen Parameter müssen "per reference" übergeben werden
+- angepasste Linker-Optionen mit und dem Pfad zu lapack -L/usr/local/opt/lapack/lib -lblas -llapack -lgfortran
+
+Klappt!!!!
